@@ -1,0 +1,31 @@
+body {
+	margin-top: 50px;
+	margin-left: 100px;
+	margin-right: 100px;
+	background-color: #f3e7d3;
+	color: #4b3621;
+	font-family: Georgia, "Times New Roman", serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	background-color: #8b6f47;
+	color: #f5ecd9;
+	border: 1px solid #d6a800;
+	padding: 10px;
+}
+
+a {
+	color: #6e4f2d;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #a67c52;
+}
+
+a:visited {
+	color: #5b3f24;
+}
