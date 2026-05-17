@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Module 9.3 Assignment">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="robots" content="nofollow">
+        <title>CSD 340 Web Development with HTML and CSS</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 40px; }
+            #container { max-width: 800px; margin: 0 auto; }
+            span.blank { background-color: #f0f0f0; border-bottom: 2px solid #333; padding: 0 4px; }
+            button { margin: 4px 2px; padding: 6px 14px; cursor: pointer; }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1>Assignment 9.3: JavaScript - Part 1</h1>
+            <h2>A Short Story: The Coding Journey</h2>
+
+            <p>
+                Once upon a time, a young programmer named Caleb sat down at his
+                <span id="word1">__________</span> and began to type. He had been studying
+                web development for several months and felt ready to tackle his first real project.
+                The room was quiet except for the soft hum of his computer fan.
+            </p>
+            <p>
+                He opened his favorite text editor and started writing
+                <span id="word2">__________</span>. Line by line, the page began to take shape.
+                Colors appeared, layouts shifted, and slowly the vision in his head became a reality
+                on the screen. It was a satisfying feeling he never tired of experiencing.
+            </p>
+            <p>
+                By midnight, Caleb leaned back in his chair with a
+                <span id="word3">__________</span> on his face. The project was nearly complete.
+                One last function remained to be written. He cracked his knuckles, took a sip of
+                coffee, and dove back in with renewed energy and determination.
+            </p>
+            <p>
+                When the final line of code was saved and the browser refreshed, everything worked
+                perfectly. Caleb let out a
+                <span id="word4">__________</span> of relief and satisfaction. He had done it.
+                The long hours had paid off, and he knew that every challenge had only made him
+                a stronger developer.
+            </p>
+
+            <hr />
+
+            <h3>Reveal the Missing Words</h3>
+            <p>
+                <button onclick="document.getElementById('word1').textContent = word1;">Reveal Word 1 (computer)</button>
+                <button onclick="document.getElementById('word2').textContent = word2;">Reveal Word 2 (JavaScript)</button>
+                <button onclick="document.getElementById('word3').textContent = word3;">Reveal Word 3 (smile)</button>
+                <button onclick="document.getElementById('word4').textContent = word4;">Reveal Word 4 (sigh)</button>
+            </p>
+        </div>
+
+        <script>
+            var word1 = "computer";
+            var word2 = "JavaScript";
+            var word3 = "smile";
+            var word4 = "sigh";
+        </script>
+    </body>
+</html>
