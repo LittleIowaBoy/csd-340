@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 10.3 Assignment">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="robots" content="nofollow">
+    <title>CSD 340 Web Development with HTML and CSS</title>
+    <link rel="stylesheet" href="schumacher_mod10_3.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Assignment 10.3: JavaScript - Part 2</h1>
+        <p class="subtitle">Click any image below to learn about Jackson's favorite things!</p>
+
+        <div id="image-gallery">
+            <div class="gallery-item"
+                 data-title="Steak"
+                 data-quote="I like steak because that is your favorite food too!"
+                 data-img="images/steak.jpg"
+                 onclick="showInfo(this)">
+                <img src="images/steak.jpg" alt="A grilled steak">
+                <p>Steak</p>
+            </div>
+            <div class="gallery-item"
+                 data-title="Soccer"
+                 data-quote="I scored 7 goals at our last soccer practice!"
+                 data-img="images/kids_soccer.jpg"
+                 onclick="showInfo(this)">
+                <img src="images/kids_soccer.jpg" alt="Kids playing soccer">
+                <p>Soccer</p>
+            </div>
+            <div class="gallery-item"
+                 data-title="Adventures in the Woods"
+                 data-quote="My favorite thing to do outside is going on an adventure in the woods."
+                 data-img="images/forest.jpg"
+                 onclick="showInfo(this)">
+                <img src="images/forest.jpg" alt="A forest path">
+                <p>Woods</p>
+            </div>
+            <div class="gallery-item"
+                 data-title="Little House on the Prairie"
+                 data-quote="Right now I like Little House on the Prairie because Mom reads it to me every night."
+                 data-img="images/little_house.jpg"
+                 onclick="showInfo(this)">
+                <img src="images/little_house.jpg" alt="Little House on the Prairie book cover">
+                <p>Book</p>
+            </div>
+            <div class="gallery-item"
+                 data-title="Science"
+                 data-quote="Science is my favorite subject. Learning about rocks is really cool!"
+                 data-img="images/science.png"
+                 onclick="showInfo(this)">
+                <img src="images/science.png" alt="Science and rocks illustration">
+                <p>Science</p>
+            </div>
+            <div class="gallery-item"
+                 data-title="Jackson"
+                 data-quote="Jackson is a lively seven-year-old with a big heart and a love of adventure!"
+                 data-img="images/jackson.jpg"
+                 onclick="showInfo(this)">
+                <img src="images/jackson.jpg" alt="Jackson">
+                <p>Jackson</p>
+            </div>
+        </div>
+
+        <div id="spotlight">
+            <p id="spotlight-prompt">&#8593; Click an image above to learn more!</p>
+            <div id="spotlight-content">
+                <img id="spotlight-img" src="" alt="">
+                <div id="spotlight-text">
+                    <h2 id="spotlight-title"></h2>
+                    <blockquote id="spotlight-quote"></blockquote>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-link">
+            <a href="../index.html">Back to Landing Page</a>
+        </div>
+    </div>
+
+    <script>
+        function showInfo(el) {
+            var title  = el.dataset.title;
+            var quote  = el.dataset.quote;
+            var imgSrc = el.dataset.img;
+
+            document.getElementById('spotlight-prompt').style.display = 'none';
+            document.getElementById('spotlight-content').style.display = 'flex';
+
+            document.getElementById('spotlight-title').textContent = title;
+            document.getElementById('spotlight-quote').textContent = '\u201C' + quote + '\u201D';
+
+            var spotImg = document.getElementById('spotlight-img');
+            spotImg.src = imgSrc;
+            spotImg.alt = title;
+
+            document.querySelectorAll('.gallery-item').forEach(function (item) {
+                item.classList.remove('active');
+            });
+            el.classList.add('active');
+        }
+
+        // Wrap each gallery image with a hover overlay
+        document.querySelectorAll('.gallery-item img').forEach(function (img) {
+            var wrap = document.createElement('div');
+            wrap.className = 'img-wrap';
+            img.parentNode.insertBefore(wrap, img);
+            wrap.appendChild(img);
+            var overlay = document.createElement('div');
+            overlay.className = 'img-overlay';
+            overlay.textContent = 'Click to Learn More';
+            wrap.appendChild(overlay);
+        });
+    </script>
+</body>
+</html>
