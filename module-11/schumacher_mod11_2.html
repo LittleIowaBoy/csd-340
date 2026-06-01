@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSD 340 Web Development with HTML and CSS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        #input-section, #delete-select-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        #todoInput, #itemSelect {
+            padding: 6px 10px;
+            font-size: 1rem;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            min-width: 220px;
+        }
+
+        button {
+            padding: 7px 14px;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Green — constructive action */
+        #btnAdd {
+            background-color: #2e7d32;
+        }
+        #btnAdd:hover { background-color: #1b5e20; }
+
+        /* Red — destructive: delete last */
+        #btnDeleteLast {
+            background-color: #c62828;
+        }
+        #btnDeleteLast:hover { background-color: #8b0000; }
+
+        /* Blue — sort */
+        #btnSort {
+            background-color: #1565c0;
+        }
+        #btnSort:hover { background-color: #0d47a1; }
+
+        /* Orange — targeted delete */
+        #btnDeleteSelected {
+            background-color: #e65100;
+        }
+        #btnDeleteSelected:hover { background-color: #bf360c; }
+
+        #display-section {
+            margin-top: 16px;
+        }
+
+        .bottom-link {
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Assignment 11.2: JavaScript - Part 3</h1>
+
+        <div id="input-section">
+            <input type="text" id="todoInput" placeholder="Enter a to-do item">
+            <button id="btnAdd" onclick="addItem()">Add</button>
+            <button id="btnDeleteLast" onclick="deleteLastItem()">Delete Last Entry</button>
+            <button id="btnSort" onclick="sortItems()">Sort</button>
+        </div>
+
+        <div id="delete-select-section">
+            <label for="itemSelect"><strong>Select item to delete:</strong></label>
+            <select id="itemSelect">
+                <option value="">-- select an item --</option>
+            </select>
+            <button id="btnDeleteSelected" onclick="deleteSelectedItem()">Delete Selected</button>
+        </div>
+
+        <div id="display-section">
+            <h2>Things To Do:</h2>
+            <ul id="todoList"></ul>
+        </div>
+
+        <div class="bottom-link">
+            <a href="../index.html">Back to Landing Page</a>
+        </div>
+    </div>
+
+    <script>
+        var todoArray = [];
+
+        function addItem() {
+            var input = document.getElementById("todoInput").value.trim();
+            if (input === "") {
+                alert("Please enter a to-do item before clicking Add.");
+                return;
+            }
+            todoArray.push(input);
+            document.getElementById("todoInput").value = "";
+            alert("Added: \"" + input + "\"");
+            displayItems();
+        }
+
+        function deleteLastItem() {
+            if (todoArray.length === 0) {
+                alert("The list is already empty.");
+                return;
+            }
+            var deleted = todoArray.pop();
+            alert("Deleted: \"" + deleted + "\"");
+            displayItems();
+        }
+
+        function deleteSelectedItem() {
+            var select = document.getElementById("itemSelect");
+            var index = select.value;
+            if (index === "") {
+                alert("Please select an item from the dropdown first.");
+                return;
+            }
+            var deleted = todoArray.splice(Number(index), 1)[0];
+            alert("Deleted: \"" + deleted + "\"");
+            displayItems();
+        }
+
+        function sortItems() {
+            if (todoArray.length === 0) {
+                alert("The list is empty — nothing to sort.");
+                return;
+            }
+            todoArray.sort();
+            alert("The list has been sorted alphabetically.");
+            displayItems();
+        }
+
+        function displayItems() {
+            var list = document.getElementById("todoList");
+            list.innerHTML = "";
+            var select = document.getElementById("itemSelect");
+            select.innerHTML = "<option value=\"\">-- select an item --</option>";
+
+            for (var i = 0; i < todoArray.length; i++) {
+                var li = document.createElement("li");
+                li.textContent = todoArray[i];
+                list.appendChild(li);
+
+                var option = document.createElement("option");
+                option.value = i;
+                option.textContent = todoArray[i];
+                select.appendChild(option);
+            }
+        }
+    </script>
+</body>
+</html>
